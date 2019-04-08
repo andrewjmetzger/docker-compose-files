@@ -1,33 +1,32 @@
 # Note: 192.168.123.xxx is an example network, you must update all these to match your own.
 
-version: '2'
+version: "3"
 
 services:
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
     hostname: pihole
-    domainname: localdomain             # <-- Update
+    domainname: localdomain
     mac_address: d0:ca:ab:cd:ef:01
     cap_add:
       - NET_ADMIN
     networks:
       pihole_network:
-        ipv4_address: 192.168.1.4   # <-- Update
+        ipv4_address: 192.168.1.4
     dns:
       - 127.0.0.1
       - 1.1.1.1
-      - 1.0.0.1
     ports:
-      - 443/tcp
-      - 53/tcp
-      - 53/udp
-      - 67/udp
-      - 80/tcp
+      - "443:443/tcp"
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "80:80/tcp"
     environment:
-      ServerIP: 192.168.1.4         # <-- Update (match ipv4_address)
-      VIRTUAL_HOST: pihole.localdomain  # <-- Update (match hostname + domainname)
-      WEBPASSWORD: "<password>"                   # <-- Add password (if required)
+      TZ: 'America/New_York'
+      WEBPASSWORD: '<password>'
+      ServerIP: 192.168.1.4
     restart: unless-stopped
 
 networks:
@@ -37,6 +36,6 @@ networks:
       parent: ovs_eth0
     ipam:
       config:
-        - subnet: 192.168.1.0/24            # <-- Update
-          gateway: 192.168.1.1              # <-- Update
-          ip_range: 192.168.1.192/28        # <-- Update
+        - subnet: 192.168.1.0/24
+          gateway: 192.168.1.1
+          ip_range: 192.168.1.192/28
