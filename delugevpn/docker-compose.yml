@@ -26,6 +26,6 @@ services:
             - '58946:58946'
         volumes:
             - '${PATH_DOWNLOADS}:/downloads'
-            - '${PATH_CONFIG}/(basename "$PWD"):/config'
+            - '${PATH_CONFIG}/$(basename "$PWD"):/config'
             - '/etc/localtime:/etc/localtime:ro'
         image: binhex/arch-delugevpn
