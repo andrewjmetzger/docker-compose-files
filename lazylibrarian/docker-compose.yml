@@ -2,7 +2,7 @@
 version: "2"
 services:
   lazylibrarian:
-    image: linuxserver/lazylibrarian
+    image: thraxis/lazylibrarian-calibre
     container_name: lazylibrarian
     environment:
       - PUID=1026
@@ -12,6 +12,10 @@ services:
       - /volume1/docker/lazylibrarian:/config
       - /volume1/downloads:/downloads
       - /volume1/media/Books:/books
+      - /volume1/media/Books:/audiobooks
+      - /volume1/media/Books:/magazines
+      - /volume1/media/Books/comics
     ports:
       - 5299:5299
     restart: unless-stopped
+  
