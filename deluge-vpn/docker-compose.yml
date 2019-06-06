@@ -5,9 +5,9 @@ services:
         env_file:  deluge-vpn.env
         environment:
             - VPN_ENABLED=yes
-            - VPN_USER=${VPN_USERNAME}
-            - VPN_PASS=${VPN_PASSWORD}
-            - VPN_PROV=${VPN_SERVICE}
+            - VPN_USER=${VPN_USER}
+            - VPN_PASS=${VPN_PASS}
+            - VPN_PROV=${VPN_PROV}
             - STRICT_PORT_FORWARD=yes
             - ENABLE_PRIVOXY=yes
             - LAN_NETWORK=${LAN_NETWORK}
