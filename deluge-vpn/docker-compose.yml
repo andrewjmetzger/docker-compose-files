@@ -2,7 +2,7 @@ version: 3
 services:
     arch-delugevpn:
         container_name: deluge-vpn
-        env_file:  deluge-vpn.env
+        env_file: deluge-vpn.env
         environment:
             - VPN_ENABLED=yes
             - VPN_USER=${VPN_USER}
