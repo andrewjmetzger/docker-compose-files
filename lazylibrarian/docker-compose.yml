@@ -1,0 +1,17 @@
+---
+version: "2"
+services:
+  lazylibrarian:
+    image: linuxserver/lazylibrarian
+    container_name: lazylibrarian
+    environment:
+      - PUID=1026
+      - PGID=100
+      - TZ=America/New_York
+    volumes:
+      - /volume1/docker/lazylibrarian:/config
+      - /volume1/downloads:/downloads
+      - /volume1/media/Books:/books
+    ports:
+      - 5299:5299
+    restart: unless-stopped
