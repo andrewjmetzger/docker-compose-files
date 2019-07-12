@@ -1,0 +1,32 @@
+# Before use: Create a scheduled task on boot to
+# chmod the Synology graphics devices, as follows:
+# #!/bin/bash
+# sudo chmod 777 /dev/dri/*
+# sudo chmod 777 /dev/dri
+# sudo chmod 777 /dev/dri/card0
+# sudo chmod 777 /dev/dri/renderD128
+# ----
+
+
+version: '2'
+services:
+  plex:
+    container_name: plex
+    image: linuxserver/plex
+    restart: unless-stopped
+    environment:
+      - TZ=America/New_York
+      - PUID=1028
+      - PGID=100
+      - VERSION=latest
+    network_mode: host
+    volumes:
+      - /volume1/docker/plex:/config
+      - /volume1/docker/plex/transcode:/transcode
+      - /volume1/media/tv/:/media/tv
+      - /volume1/media/movies:/media/movies
+
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/dri/card0:/dev/dri/card0
+      - /dev/dri/renderD128:/dev/dri/renderD128
