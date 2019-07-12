@@ -12,11 +12,11 @@ version: '2'
 services:
   plex:
     container_name: plex
-    image: linuxserver/plex
+    image: linuxserver/plex:latest
     restart: unless-stopped
     environment:
       - TZ=America/New_York
-      - PUID=1028
+      - PUID=<PUID>
       - PGID=100
       - VERSION=latest
     network_mode: host
