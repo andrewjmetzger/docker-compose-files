@@ -1,6 +1,6 @@
 version: '2'
 services:
-    adguardhome:
+    adguard-home:
         container_name: adguard-home
         image: adguard/adguardhome
         restart: always
