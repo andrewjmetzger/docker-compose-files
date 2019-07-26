@@ -9,8 +9,8 @@ services:
             - NET_ADMIN
         
         volumes:
-            - '/volume1/config/adguard-home/work:/opt/adguardhome/work'
-            - '/volume1/config/adguard-home/conf:/opt/adguardhome/conf'
+            - '/volume1/docker/adguard-home/work:/opt/adguardhome/work'
+            - '/volume1/docker/adguard-home/conf:/opt/adguardhome/conf'
         
         ports:
             - 53/tcp
