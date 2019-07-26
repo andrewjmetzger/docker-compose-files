@@ -1,0 +1,40 @@
+version: '2'
+services:
+    adguardhome:
+        container_name: adguard-home
+        image: adguard/adguardhome
+        restart: always
+        
+        cap_add:
+            - NET_ADMIN
+        
+        volumes:
+            - '/volume1/config/adguard-home/work:/opt/adguardhome/work'
+            - '/volume1/config/adguard-home/conf:/opt/adguardhome/conf'
+        
+        ports:
+            - 53/tcp
+            - 53/udp
+            - 67/udp
+            - 68/tcp
+            - 68/udp
+            - 80/tcp
+            - 443/tcp
+            - 853/tcp
+            - 3000/tcp
+        
+        hostname: adguard-home-dns
+        networks:
+            adguard-network:
+                ipv4_address: 192.168.1.4
+                driver: macvlan
+                driver_opts:
+                    parent: ovs_eth0
+                ipam:
+                    config:
+                        - subnet: 192.168.1.0/24
+                        - gateway: 192.168.1.1
+                        - ip_range: 192.168.1.192/28
+        dns:
+            - 127.0.0.1
+            - 1.1.1.1
