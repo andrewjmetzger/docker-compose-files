@@ -12,5 +12,5 @@ services:
       - /volume1/media/movies:/movies
       - /volume1/downloads:/downloads
     ports:
-      - 8989:8989
+      - 7878:7878
     restart: unless-stopped
