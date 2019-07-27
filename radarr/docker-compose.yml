@@ -1,6 +1,6 @@
 version: "2"
 services:
-  sonarr:
+  radarr:
     image: linuxserver/radarr:nightly
     container_name: radarr
     environment:
