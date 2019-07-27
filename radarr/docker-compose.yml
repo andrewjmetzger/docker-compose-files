@@ -1,0 +1,16 @@
+version: "2"
+services:
+  sonarr:
+    image: linuxserver/radarr:nightly
+    container_name: radarr
+    environment:
+      - PUID=1027
+      - PGID=100
+      - TZ=America/New_York
+    volumes:
+      - /volume1/docker/radarr:/config
+      - /volume1/media/movies:/movies
+      - /volume1/downloads:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
