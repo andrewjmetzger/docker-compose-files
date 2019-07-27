@@ -4,7 +4,7 @@ services:
     image: linuxserver/sonarr:preview
     container_name: sonarr
     environment:
-      - PUID=1028
+      - PUID=1027
       - PGID=100
       - TZ=America/New_York
     volumes:
