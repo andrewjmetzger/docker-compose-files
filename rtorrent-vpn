@@ -1,0 +1,36 @@
+version: '2'
+services:
+  rtorrent:
+    container_name: rtorrent
+    image: binhex/arch-rtorrentvpn
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - '9080:9080'
+      - '9443:9443'
+      - '8118:8118'
+      - '9099:5000'
+    environment:
+      - VPN_ENABLED=yes
+      - VPN_USER=pxxxxxx
+      - VPN_PASS=xxxxxxx
+      - VPN_PROV=pia
+      - STRICT_PORT_FORWARD=yes
+      - ENABLE_PRIVOXY=yes
+      - ENABLE_AUTODL_IRSSI=yes
+      - ENABLE_RPC2=yes
+      - ENABLE_RPC2_AUTH=yes
+      - LAN_NETWORK=192.168.1.0/24
+      - 'NAME_SERVERS=209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1'
+      - DEBUG=false
+      - PHP_TZ=America/New_York
+      - UMASK=000
+      - PUID=1027
+      - PGID=100
+    volumes:
+      - '/volume1/docker/rtorrent:/config'
+      - '/volume1/downloads:/downloads'
+      - '/etc/localtime:/etc/localtime:ro'
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
