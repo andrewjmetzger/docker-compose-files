@@ -32,9 +32,10 @@ services:
                     parent: ovs_eth0
                 ipam:
                     config:
-                        - subnet: 192.168.1.0/24
-                        - gateway: 192.168.1.1
-                        - ip_range: 192.168.1.192/28
+                        - subnet: 172.30.200.0/24
+                        - gateway: 172.30.200.1
+                        - ip_range: 172.30.200.40
         dns:
             - 127.0.0.1
             - 1.1.1.1
+            -208.67.222.222
